@@ -19,7 +19,7 @@ line "- Ham" for "- Bacon" and the right branch changes the line "- Ham" for
 As both branches alter the same line, you can't merge both without generating
 a conflict for that line:
 
-    $ git checkout master
+    $ git checkout main
     $ git merge edit-conflict/left
     $ git merge edit-conflict/right
     Auto-merging groceries.txt
@@ -29,8 +29,8 @@ a conflict for that line:
 This is a good way to experiment with manual resolution, `rerere`, merge
 tools, and other approaches to resolving simple conflicts.
 
-If you get really stuck, run `git reset --hard origin/master` to throw away
-your work and start back from a clean version of the master branch.
+If you get really stuck, run `git reset --hard origin/main` to throw away
+your work and start back from a clean version of the main branch.
 
 # Append conflict
 
@@ -51,7 +51,7 @@ Bacon" as above, while the right branch changes the name of the file from
 
 Git will automatically resolve this kind of conflict:
 
-    $ git checkout master -b t
+    $ git checkout main -b t
     $ git merge edit-move/left
     $ git merge edit-move/right
     Merge made by recursive.
@@ -70,7 +70,7 @@ branches make changes to the structure of the project in conflicting ways. The
 `move-move/right` branch renames "groceries.txt" to "grocery-list.txt". When
 you merge them, Git does something interesting:
 
-    $ git checkout master
+    $ git checkout main
     $ git merge move-move/left
     Fast-forward
      groceries.txt => shopping.txt |    0
@@ -105,7 +105,7 @@ These are the simple baseline cases. However, you can concoct some even worse
 scenarios by combining them. For example, combining tree conflicts with edit
 conflicts:
 
-    $ git checkout master -b problem/left
+    $ git checkout main -b problem/left
     Switched to a new branch 'problem/left'
     $ git merge edit-conflict/left
     Fast-forward
@@ -150,6 +150,6 @@ Describing and resolving this scenario left as an exercise.
 To keep the history of this repository simple and easy-to-follow, I regularly
 push history-altering changes. Do not rely on being able to pull and merge
 from this repository; if you're starting a new set of experiments, clone a new
-copy of this repository. I do try to keep the history of `master` intact, so
+copy of this repository. I do try to keep the history of `main` intact, so
 that pull requests make sense, but the conflict branches get reset and rebased
 as needed.
